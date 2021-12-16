@@ -21,25 +21,28 @@ function dothis(e) {
   let unconverted = JSON.parse(localStorage.getItem(email.value));
   console.log(unconverted);
 
-  // let list = document.createElement('ul')
-  // list.className = email.value;
-  // let namefeild = document.createElement('li')
-  // namefeild.className = mail_value
-  // namefeild.appendChild(document.createTextNode(`email is ${mail_value} password is${password_value}`))
+  let list = document.createElement('ul')
+  list.className = email.value;
+  let namefeild = document.createElement('li')
+  namefeild.className = mail_value
+  namefeild.appendChild(document.createTextNode(`email is ${mail_value} password is${password_value}`))
 
-  // let button = document.createElement('input')
-  // button.setAttribute("type", "button")
-  // button.setAttribute("value", 'delete')
-  // button.id = "button"
-  // button.className = "button"
-  // button.appendChild(document.createTextNode('delete'))
+  let button = document.createElement('input')
+  button.setAttribute("type", "button")
+  button.setAttribute("value", 'delete')
+  button.id = "button"
+  button.className = "button"
+  button.appendChild(document.createTextNode('delete'))
   // console.log(button);
   let recent = document.getElementById('recent')
   list.appendChild(namefeild)
   recent.appendChild(list)
-  // list.appendChild(button)
+  list.appendChild(button)
   console.log(list);
+
 }
+
+
 
 window.addEventListener('load', showuserdetails)
 
@@ -60,16 +63,20 @@ function showuserdetails() {
 
 }
 
-// const btn = document.querySelector('.button')
-// if (btn !== null) {
-//   btn.addEventListener('click', (e) => {
-//     let parent = document.querySelector('#recent')
-//     let child = btn.parentElement
-//     parent.removeChild(child)
-//     let removingitem = localStorage.getItem(child.nodeType(1))
-//     localStorage.removeItem(removingitem)
-//   })
-// }
+const btn = document.querySelector('.button')
+if (btn !== null) {
+  btn.addEventListener('click', (e) => {
+
+    let details = axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp')
+     let id= details.id
+     axios.delete('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp/id')
+    let parent = document.querySelector('#recent')
+    let child = btn.parentElement
+    parent.removeChild(child)
+    // let removingitem = localStorage.getItem(child.nodeType(1))
+    // localStorage.removeItem(removingitem)
+  })
+}
 
 // const body = document.querySelector('body')
 // const main = document.querySelector('#maintext')
