@@ -1,3 +1,4 @@
+
 const form = document.querySelector('.forms')
 const email = document.querySelector('#exampleInputEmail1')
 const password = document.querySelector('#exampleInputPassword1')
@@ -68,8 +69,8 @@ if (btn !== null) {
   btn.addEventListener('click', (e) => {
 
     let details = axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp')
-     let id= details.id
-     axios.delete('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp/id')
+    let id = details.id
+    axios.delete('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp/id')
     let parent = document.querySelector('#recent')
     let child = btn.parentElement
     parent.removeChild(child)
