@@ -11,11 +11,11 @@ function dothis(e) {
     name: email.value,
     password: password.value
   };
-  axios.post('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp',myobject)
-  .then((data)=>console.log(data)).catch((er)=>console.error(er))
+  axios.post('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp', myobject)
+    .then((data) => console.log(data)).catch((er) => console.error(er))
 
-  
-     
+
+
   let converted = JSON.stringify(myobject);
   localStorage.setItem(email.value, converted);
   let unconverted = JSON.parse(localStorage.getItem(email.value));
@@ -43,18 +43,18 @@ function dothis(e) {
 
 window.addEventListener('load', showuserdetails)
 
-function showuserdetails(){
-     axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp')
-     .then((resolve)=>{
-      for(let i=0;i<resolve.data.length;i++)
-     { let details = document.createElement('li')
-      details.appendChild(document.createTextNode(resolve.data[i][2]))
-      let display=document.querySelector('#recent')
-      display.appendChild(details)
+function showuserdetails() {
+  axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp')
+    .then((resolve) => {
+      for (let i = 0; i < resolve.data.length; i++) {
+        let details = document.createElement('li')
+        details.appendChild(document.createTextNode(resolve.data[i]))
+        let display = document.querySelector('#recent')
+        display.appendChild(details)
 
-}
-     })
-     .catch((error)=>console.log(error))
+      }
+    })
+    .catch((error) => console.log(error))
 
 
 
