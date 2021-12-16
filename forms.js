@@ -40,6 +40,26 @@ function dothis(e) {
   // list.appendChild(button)
   console.log(list);
 }
+
+window.addEventListener('load', showuserdetails)
+
+function showuserdetails(){
+     axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp')
+     .then((resolve)=>{
+      for(let i=0;i<resolve.data.length;i++)
+     { let details = document.createElement('li')
+      details.appendChild(document.createTextNode(resolve.data[i][2]))
+      let display=document.querySelector('#recent')
+      display.appendChild(details)
+
+}
+     })
+     .catch((error)=>console.log(error))
+
+
+
+}
+
 // const btn = document.querySelector('.button')
 // if (btn !== null) {
 //   btn.addEventListener('click', (e) => {
