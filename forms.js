@@ -3,6 +3,13 @@ const form = document.querySelector('.forms')
 const email = document.querySelector('#exampleInputEmail1')
 const password = document.querySelector('#exampleInputPassword1')
 form.addEventListener('submit', dothis)
+
+function edituser(email,userid){
+  document.getElementById('email').value=email
+  deleteUser(userid)
+  
+}
+
 function dothis(e) {
   e.preventDefault();
   const mail_value = email.value;
@@ -34,17 +41,19 @@ function dothis(e) {
   button.id = "button"
   button.className = "button"
   button.appendChild(document.createTextNode('delete'))
-  // console.log(button);
+  let edit =document.createElement('button')
+ edit.setAttribute('onclick',`${edituser()}`)
+ edit.setAttribute('value','edit')
+ edit.appendChild(document.createTextNode("edit"))
+ console.log(button);
   let recent = document.getElementById('recent')
   list.appendChild(namefeild)
   recent.appendChild(list)
   list.appendChild(button)
+  list.appendChild(edit)
   console.log(list);
 
 }
-
-
-
 window.addEventListener('load', showuserdetails)
 
 function showuserdetails() {
@@ -60,10 +69,15 @@ function showuserdetails() {
     })
     .catch((error) => console.log(error))
 
-
-
 }
-
+function deleteUser(userid){
+  let del =axios.get('https://crudcrud.com/api/f8bbe88db1bf4b5c9912d631e17ee4c1/AppointmentApp/userid')
+  .then((response)=>{
+    let parent = document.querySelector('#recent')
+    let child = userid.parentElement
+    parent.removeChild(child)
+  })
+}
 const btn = document.querySelector('.button')
 if (btn !== null) {
   btn.addEventListener('click', (e) => {
@@ -74,8 +88,8 @@ if (btn !== null) {
     let parent = document.querySelector('#recent')
     let child = btn.parentElement
     parent.removeChild(child)
-    // let removingitem = localStorage.getItem(child.nodeType(1))
-    // localStorage.removeItem(removingitem)
+    let removingitem = localStorage.getItem(child.nodeType(1))
+    localStorage.removeItem(removingitem)
   })
 }
 
